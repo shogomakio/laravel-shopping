@@ -31,6 +31,11 @@ Route::get('back',[
     'as' => 'product.back'
 ]);
 
+Route::post('search',[
+    'uses' => 'ProductController@search',
+    'as' => 'product.search'
+]);
+
 Route::get('shopping-cart',[
     'uses' => 'ProductController@getCart',
     'as' => 'product.shoppingCart'
@@ -108,25 +113,76 @@ Route::group(['prefix' => 'user'], function(){
 //     Route::get('user.admin', function(){
 //             return "this page requires Admin privileges.";
 //         });
-// });
+// });   
+
+
+Route::get('/admin', [
+    'uses' => 'AdminController@getSignin',
+    'as' => 'admin.index'
+]);
+
+Route::post('/admin', [
+    'uses' => 'AdminController@postSignin',
+    'as' => 'admin.index'
+]);
+
+Route::get('/logout', [
+    'uses' => 'AdminController@getLogout',
+    'as' => 'admin.logout'
+]);
 
 // Auth::routes();
-
+// Route::group(['prefix' => 'user'], function(){
 // Route::group(['middleware' =>  'admin'], function(){
+
+
+Route::group(['prefix' => 'admin'], function(){
+
+        Route::group(['middleware' => 'auth', 'admin'], function(){
             
-            Route::get('/admin', [
-                'uses' => 'AdminController@getSignin',
-                'as' => 'admin.index'
+            Route::get('/register', [
+                'uses' => 'AdminController@getRegister',
+                'as' => 'admin.register'
             ]);
-            
-            Route::post('/admin', [
-                'uses' => 'AdminController@postSignin',
-                'as' => 'admin.index'
+                        
+            Route::post('/=register', [
+                'uses' => 'AdminController@postRegister',
+                'as' => 'admin.register'
             ]);
 
-            Route::get('/logout', [
-                'uses' => 'AdminController@getLogout',
-                'as' => 'admin.logout'
+            Route::get('/list', [
+                'uses' => 'AdminController@getList',
+                'as' => 'admin.list'
             ]);
+            
+            // Route::post('/list', [
+            //     'uses' => 'AdminController@postList',
+            //     'as' => 'admin.list'
+            // ]);
+
+            Route::get('update/{product_id}', [
+                'uses' => 'AdminController@getUpdate',
+                'as' => 'admin.update'
+            ]);
+            
+            Route::post('updateConfirm', [
+                'uses' => 'AdminController@postUpdate',
+                'as' => 'admin.updateConfirm'
+            ]);
+
+            Route::get('delete/{product_id}', [
+                'uses' => 'AdminController@getDelete',
+                'as' => 'admin.delete'
+            ]);
+            
+            Route::post('deleteConfirm', [
+                'uses' => 'AdminController@postDelete',
+                'as' => 'admin.deleteConfirm'
+            ]);
+
+            // Route::controller('update', 'AdminController');
+            
+            });
+        });
         // });
 

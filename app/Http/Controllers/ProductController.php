@@ -79,4 +79,12 @@ class ProductController extends Controller
         $total = $cart->totalPrice;
         return view('shop.checkout', ['total' => $total]);
     }
+
+    public function search(Request $request){
+        // print_r($request->q);
+        $query = '%'.$request->q.'%';
+        $products = Product::where('name', 'like', $query)
+        ->orWhere('detail', 'like', $query)->get();
+        return view('shop.search', ['products' => $products]);
+    }
 }

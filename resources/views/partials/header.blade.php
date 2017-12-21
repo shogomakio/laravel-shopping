@@ -29,11 +29,12 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" method="post" action="{{route('product.search')}}">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="q">
+        <button type="submit" class="btn btn-default">Search</button>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        {{csrf_field()}}
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('product.shoppingCart')}}"><i class="fas fa-shopping-cart"></i> Shoppig Cart <span class="badge">{{ Session::has('cart')?Session::get('cart')->totalQty : ''}}</span></a></li>

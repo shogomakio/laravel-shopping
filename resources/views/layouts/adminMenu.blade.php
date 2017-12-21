@@ -24,6 +24,10 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" >Admin Panel</a>
+        <ul class="nav navbar-nav">
+        <li><a href="{{route('admin.register')}}">Register Product<span class="sr-only">(current)</span></a></li>
+        <li><a href="{{route('admin.list')}}">Products List</a></li>
+        </ul>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -39,7 +43,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle"></i> {{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->first_name : 'Account'}}<span class="caret"></span></a>
           <ul class="dropdown-menu">  
-            <li><a href="{{route('product.index')}}">Back to the main page</a></li>
+            <li><a href="{{route('admin.logout')}}">Back to the main page</a></li>
           @if(Auth::guard('admin')->check())
             {{--  <li><a href="{{route('user.profile')}}">Profile</a></li>  --}}
             <li role="separator" class="divider"></li>
