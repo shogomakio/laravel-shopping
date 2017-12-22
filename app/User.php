@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_id', 'first_name', 'last_name', 'email', 'password'
+        'user_id', 'first_name', 'last_name', 'email', 'password', 'miss_count'
     ];
 
     /**
@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'miss_count'
+        'password', 'remember_token'
     ];
 
     public function purchase(){

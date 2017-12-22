@@ -142,10 +142,10 @@ Route::group(['prefix' => 'admin'], function(){
             
             Route::get('/register', [
                 'uses' => 'AdminController@getRegister',
-                'as' => 'admin.register'
+                'as' => 'admin.register' 
             ]);
                         
-            Route::post('/=register', [
+            Route::post('/register', [
                 'uses' => 'AdminController@postRegister',
                 'as' => 'admin.register'
             ]);
@@ -165,7 +165,7 @@ Route::group(['prefix' => 'admin'], function(){
                 'as' => 'admin.update'
             ]);
             
-            Route::post('updateConfirm', [
+            Route::post('update', [
                 'uses' => 'AdminController@postUpdate',
                 'as' => 'admin.updateConfirm'
             ]);
