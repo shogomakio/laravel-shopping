@@ -86,5 +86,40 @@ class ProductController extends Controller
         $products = Product::where('name', 'like', $query)
         ->orWhere('detail', 'like', $query)->get();
         return view('shop.search', ['products' => $products]);
+
+
+        // print_r($request->q);
+        // $query = '%'.$request->q.'%';
+        // $genre = $request->genre;
+        // $brand = $request->brand;
+        // echo $genre;
+        // echo $brand;
+        // if(($genre == '-') && ($brand == '-')){
+        //     $products = Product::where('name', 'like', $query)
+        //     ->orWhere('detail', 'like', $query)->get();
+        // }elseif(($genre == '-') && ($brand != '-')){
+        //     $products = Product::where('brand_id', $brand)
+        //     ->where(function ($query){
+        //         $query->where('name', 'like', $query)
+        //         ->orWhere('detail', 'like', $query) ;
+        //     })
+        //     ->get();
+        // }elseif(($genre != '-') && ($brand == '-')){
+        //     $products = Product::where('genre_id', '=', $genre)
+        //     ->where(function ($query){
+        //         $query->where('name', 'like', $query)
+        //         ->orWhere('detail', 'like', $query) ;
+        //     })
+        //     ->get();
+        // }else{
+        //     $products = Product::where('brand_id', '=', $brand)
+        //     ->where('genre_id', $genre)
+        //     ->where(function ($query){
+        //         $query->where('name', 'like', $query)
+        //         ->orWhere('detail', 'like', $query) ;
+        //     })
+        //     ->get();
+        // }
+        // return view('shop.search', ['products' => $products]);
     }
 }

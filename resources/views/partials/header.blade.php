@@ -10,15 +10,7 @@
       <a class="navbar-brand" href="{{Route('product.index')}}">Home</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" method="post" action="{{route('product.search')}}">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="q">
-        <button type="submit" class="btn btn-default">Search</button>
-        </div>
-        {{csrf_field()}}
-      </form>
-      <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('product.shoppingCart')}}"><i class="fas fa-shopping-cart"></i> Shoppig Cart <span class="badge">{{ Session::has('cart')?Session::get('cart')->totalQty : ''}}</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user-circle"></i> {{Auth::check() ? Auth::user()->first_name : 'Account'}}<span class="caret"></span></a>
@@ -34,6 +26,33 @@
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
+
+    {{--  <table class="navbar-form navbar-right">
+      <td>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-right" method="post" action="{{route('product.search')}}">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="q" id="q">
+                        <select name="genre">
+                            <option value="-">Genre</option>
+                            @foreach($genres as $genre)
+                            <option value="{{$genre['genre_id']}}" >{{$genre['genre_name']}}</option>
+                            @endforeach
+                        </select>
+                        </td>
+                        <td>
+                        <select name="brand">
+                            <option value="-">Brand</option>
+                            @foreach($brands as $brand)
+                            <option value="{{$brand['brand_id']}}" >{{$brand['brand_name']}}</option>
+                            @endforeach
+                        </select>
+            <button type="submit" class="btn btn-default">Search</button>
+            </div>
+            {{csrf_field()}}
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </td>
+    </table>  --}}
   </div><!-- /.container-fluid -->
 </nav>
