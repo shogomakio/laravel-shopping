@@ -24,14 +24,11 @@ class AdminController extends Controller
 
     public function postSignin(Request $request){
         $this->validate($request, [
-            // 'email' => 'email|required',
             'password' => 'required|min:4'
         ]);
         if(Auth::guard('admin')->attempt(['email' => $request->email,
             'password' => $request->password])){
                 return redirect()->route('admin.register');
-            
-        // echo 'sdasdasdasdasd';
         }
         // else
         // {

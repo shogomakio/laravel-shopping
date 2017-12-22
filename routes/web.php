@@ -68,7 +68,6 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['prefix' => 'user'], function(){
 
     Route::get('/message/{$message}', [
-        // 'uses' => 'ProductController@index',
         'as' => 'user.message'
     ]);
 
@@ -108,14 +107,6 @@ Route::group(['prefix' => 'user'], function(){
     });
 });
 
-// Route::group(['middleware' => 'Admin'], function(){
-
-//     Route::get('user.admin', function(){
-//             return "this page requires Admin privileges.";
-//         });
-// });   
-
-
 Route::get('/admin', [
     'uses' => 'AdminController@getSignin',
     'as' => 'admin.index'
@@ -154,11 +145,6 @@ Route::group(['prefix' => 'admin'], function(){
                 'uses' => 'AdminController@getList',
                 'as' => 'admin.list'
             ]);
-            
-            // Route::post('/list', [
-            //     'uses' => 'AdminController@postList',
-            //     'as' => 'admin.list'
-            // ]);
 
             Route::get('update/{product_id}', [
                 'uses' => 'AdminController@getUpdate',
