@@ -127,9 +127,9 @@ Route::get('/logout', [
 // Route::group(['middleware' =>  'admin'], function(){
 
 
-Route::group(['prefix' => 'admin'], function(){
+    Route::group(['middleware' => 'admin'], function(){
 
-        Route::group(['middleware' => 'auth', 'admin'], function(){
+        Route::group(['prefix' => 'admin'], function(){
             
             Route::get('/register', [
                 'uses' => 'AdminController@getRegister',
@@ -165,10 +165,7 @@ Route::group(['prefix' => 'admin'], function(){
                 'uses' => 'AdminController@postDelete',
                 'as' => 'admin.deleteConfirm'
             ]);
-
-            // Route::controller('update', 'AdminController');
             
             });
         });
-        // });
 

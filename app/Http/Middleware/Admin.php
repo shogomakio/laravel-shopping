@@ -35,10 +35,9 @@ class Admin
         //     }
         // }
         if(Auth::guard('admin')->check()){
-            // if(Auth::check() && Auth::user()->isAdmin()){
             return $next($request);
         }
-        return redirect('product.index');
+        return redirect('admin.list');
     }
     /**
      * The attributes that are mass assignable.
